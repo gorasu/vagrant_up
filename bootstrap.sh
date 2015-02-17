@@ -7,6 +7,7 @@ VAGRANT_WWW="/vagrant/www"
 		mkdir /vagrant/www
 		mkdir /vagrant/files
 		mkdir /vagrant/files/vhosts
+		mkdir /vagrant/files/logs
 		mkdir /vagrant/tmp/
 		mkdir /vagrant/tmp/xdebug/
 		mkdir /vagrant/tmp/xdebug/tmp_xdebug
@@ -38,7 +39,11 @@ if [ ! -f "${MARKER_FILE}" ]
 
 
         cp -raT /etc/apache2/sites-available /etc/apache2/sites-enabled
-		createLink /vagrant/files/vhosts /etc/apache2/sites-enabled
+	rm /etc/apache2/sites-enabled/000-default.conf
+	createLink /vagrant/files/vhosts/ /etc/apache2/sites-enabled/
+	createLink /vagrant/files/logs/ /var/log
+
+	
 
 		
 		sudo apt-get -y install php5-dev curl php5-curl php5-gd php-pear
