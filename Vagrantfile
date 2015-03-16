@@ -7,8 +7,13 @@ Vagrant.configure("2") do |c|
                                                               mount_options: ["dmode=775,fmode=664"]
 	c.vm.network :private_network, ip: "10.0.0.101"
 
-	c.vm.provision "shell" do |s| 
-		s.path = "bootstrap.sh"
+	c.vm.provision "shell",run: "once" do |s|
+		s.path = "provision/bootstrap.sh"
 	end
+
+	c.vm.provision "shell",run: "always" do |s|
+		s.path = "provision/up_shell.sh"
+	end
+
 
 end
