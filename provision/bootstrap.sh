@@ -9,20 +9,21 @@ if [  -f "${MARKER_FILE}" ]
     eit ;
 fi
 		   function createLink() {
-			
-				if [ ! -f "$1" ] 
+				END_LINK_PATH=$1
+				START_LINK_PATH=$2
+				if [ ! -f "$1" ]
 					then
-					 sudo cp -r $2 $1
-					 sudo rm -r $2
+					 sudo cp -r $START_LINK_PATH $END_LINK_PATH
+					 sudo rm -r $START_LINK_PATH
+					 END_OF_PATH=`basename "${START_LINK_PATH}"`
+					 END_LINK_PATH=${END_LINK_PATH%/}'/'$END_OF_PATH					 
 				fi
-				if [ ! -f "$1" ] 
+				if [ ! -f "$1" ]
 					 then
 					sudo touch "$1"
 				fi
-				
-				 sudo ln -sf $1 $2
 
-
+				 sudo ln -sf $END_LINK_PATH $START_LINK_PATH
 		   }
 
             function createDir(){
