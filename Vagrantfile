@@ -14,6 +14,9 @@ Vagrant.configure("2") do |c|
 	c.vm.provision "shell",run: "always" do |s|
 		s.path = "provision/up_shell.sh"
 	end
-
+	
+	c.vm.provider "virtualbox" do |v|
+	  v.name = "VirtualBoxName"
+	end
 
 end

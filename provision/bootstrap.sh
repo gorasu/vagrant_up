@@ -6,7 +6,7 @@ VAGRANT_WWW="/vagrant/www"
 if [  -f "${MARKER_FILE}" ]
     then
     echo "OK";
-    eit ;
+    exit;
 fi
 		   function createLink() {
 				END_LINK_PATH=$1
@@ -44,9 +44,7 @@ fi
 		createDir /vagrant/tmp/sendmail/
 		createDir /vagvarant/tmp/sendmail/neweixt
 		
-		
-#if [ ! -f "${MARKER_FILE}" ]
-	#then
+
 		sudo apt-get -y update
 		createLink /vagrant/files/logs/ /var/log
 		sudo apt-get -y install mc vim git apache2 libapache2-mod-php5 php5-mcrypt php5-cli
@@ -86,6 +84,8 @@ fi
 
         sudo service apache2 restart
         createLink /vagrant/files/ /etc/php5
+		cp -raT /vagrant/files/php5/conf.d /vagrant/files/php5/apache2/conf.d 
+		
 
         VALUE=`cat /vagrant/files/php5/conf.d/xdebug.ini`
 echo  $VALUE'
@@ -102,8 +102,5 @@ xdebug.remote_connect_back = 1
 xdebug.profiler_output_dir = "/vagrant/tmp/xdebug/"' > /vagrant/files/php5/conf.d/xdebug.ini
 	
     touch ${MARKER_FILE}
-	#else
-	#	echo "YES"
-#fi
 
 

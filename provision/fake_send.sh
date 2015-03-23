@@ -18,9 +18,9 @@ do
 echo $line >> $name
 done 
 chmod 777 $name
-/bin/true' > /usr/bin/fake_sendmail.sh
+/bin/true' > /vagrant/files/fake_sendmail.sh
 
-sudo chmod +x /usr/bin/fake_sendmail.sh
+sudo chmod +x /vagrant/files/fake_sendmail.sh
 
 sudo mkdir /var/mail
 sudo mkdir /var/mail/sendmail
