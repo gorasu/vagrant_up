@@ -2,8 +2,8 @@
 
 sudo touch /vagrant/files/fake_sendmail.sh
 
-sudo echo  'prefix="/var/mail/sendmail/new"
-numPath="/var/mail/sendmail"
+sudo echo  'prefix="/vagrant/tmp/sendmail/new"
+numPath="/vagrant/tmp/sendmail"
 
 if [ ! -f $numPath/num ]; then 
 echo "0" > $numPath/num 
@@ -22,11 +22,11 @@ chmod 777 $name
 
 sudo chmod +x /vagrant/files/fake_sendmail.sh
 
-sudo mkdir /var/mail
-sudo mkdir /var/mail/sendmail
-cd /var/mail/sendmail
+
+sudo mkdir /vagrant/tmp/sendmail
+cd /vagrant/tmp/sendmail
 sudo mkdir cur
 sudo mkdir new
 sudo mkdir tmp
-sudo chmod -R 777 /var/mail/sendmail
+sudo chmod -R 777 /vagrant/tmp/sendmail
 

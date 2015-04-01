@@ -84,7 +84,7 @@ fi
 
         sudo service apache2 restart
         createLink /vagrant/files/ /etc/php5
-		cp -raT /vagrant/files/php5/conf.d /vagrant/files/php5/apache2/conf.d 
+
 		
 
         VALUE=`cat /vagrant/files/php5/conf.d/xdebug.ini`
@@ -102,5 +102,7 @@ xdebug.remote_connect_back = 1
 xdebug.profiler_output_dir = "/vagrant/tmp/xdebug/"' > /vagrant/files/php5/conf.d/xdebug.ini
 	
     touch ${MARKER_FILE}
+    cp -raT /vagrant/files/php5/conf.d /vagrant/files/php5/apache2/conf.d
+
 
 
